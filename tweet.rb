@@ -15,7 +15,7 @@ end
 
 Page.all(:conditions => {:status => 'stored'}).each{|page|
   mes = "#{page.title} #{page.url}"
-  tw.update(mes)
+  tw.update(mes) rescue next
   page.status = 'published'
   page.published_at = Time.now.to_i
   page.save
