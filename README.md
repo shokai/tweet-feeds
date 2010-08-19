@@ -12,6 +12,8 @@ rubygems
 
 * mongoid
 * feed-normalizer
+* twitter
+* oauth
 
 install
 =======
