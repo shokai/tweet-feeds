@@ -1,0 +1,14 @@
+mongo_server : 'localhost'
+mongo_port : 27017
+mongo_db : 'tweet-feeds'
+
+user_agent : 'tweet-feeds'
+
+consumer_key : 'your-app-consumer-key'
+consumer_secret : 'your-app-consumer-secret'
+access_token : 'use auth.rb'
+access_secret : 'use auth.rb'
+
+feeds :
+- 'http://shokai.org/blog/feed'
+- 'http://d.hatena.ne.jp/shokai/rss'
