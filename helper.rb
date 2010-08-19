@@ -17,4 +17,3 @@ Mongoid.configure do |c|
   c.master = m.db(@conf['mongo_db'])
 end
 
-@feeds = @conf['feeds']
