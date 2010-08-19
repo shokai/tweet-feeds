@@ -5,9 +5,11 @@ tweet feeds
 require
 =======
 DB
+
 *[mongodb](http://www.mongodb.org/)
 
 rubygems
+
 *mongoid
 *feed-normalizer
 
