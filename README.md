@@ -6,12 +6,12 @@ require
 =======
 DB
 
-*[mongodb](http://www.mongodb.org/)
+* [mongodb](http://www.mongodb.org/)
 
 rubygems
 
-*mongoid
-*feed-normalizer
+* mongoid
+* feed-normalizer
 
 install
 =======
