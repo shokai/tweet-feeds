@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'rubygems'
+require 'bundler'
 require 'yaml'
 require 'mongoid'
 require File.dirname(__FILE__)+'/page'

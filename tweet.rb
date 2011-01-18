@@ -2,7 +2,9 @@
 require File.dirname(__FILE__)+'/helper'
 require 'kconv'
 require 'uri'
+gem 'twitter','0.9.12'
 require 'twitter'
+
 
 begin
   oauth = Twitter::OAuth.new(@conf['consumer_key'], @conf['consumer_secret'])
@@ -15,7 +17,12 @@ end
 
 Page.all(:conditions => {:status => 'stored'}).each{|page|
   mes = "#{page.title} #{page.url}"
-  tw.update(mes) rescue next
+  begin
+    tw.update(mes)
+  rescue
+    STDERR.puts "tweet failed! #{mes}"
+    next
+  end
   page.status = 'published'
   page.published_at = Time.now.to_i
   page.save
