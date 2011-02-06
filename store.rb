@@ -10,8 +10,13 @@ require 'uri'
   puts url
   begin
     feed = FeedNormalizer::FeedNormalizer.parse open(url, 'User-Agent' => @conf['user_agent'])
-  rescue
+  rescue => e
     STDERR.puts 'feed parse error!'
+    STDOUT.puts e
+    next
+  rescue Timeout::Error => e
+    STDERR.puts 'feed parse error!'
+    STDOUT.puts e
     next
   end
   feed.entries.reverse.each{|i|
