@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'bundler/setup'
-requier 'json'
+require 'json'
 require 'yaml'
-gem 'mongoid','>=2.0.0.rc.5'
+gem 'mongoid','>=2.0.0'
 require 'mongoid'
 require File.dirname(__FILE__)+'/page'
 $KCODE = 'u'
