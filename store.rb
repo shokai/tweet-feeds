@@ -19,6 +19,7 @@ require 'uri'
     STDOUT.puts e
     next
   end
+  next unless feed
   feed.entries.reverse.each{|i|
     next if Page.all(:conditions => {:url => i.url}).size > 0
     page = Page.new(
