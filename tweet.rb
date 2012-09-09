@@ -17,10 +17,10 @@ rescue => e
   exit 1
 end
 
-Page.all(:conditions => {:status => 'stored'}).each{|page|
+Page.find_stored.each{|page|
   mes = "#{page.title} #{page.url}"
   begin
-    Twitter.update(mes)
+    Twitter.update mes
   rescue
     STDERR.puts "tweet failed! #{mes}"
     next

@@ -8,5 +8,9 @@ class Page
   field :created_at, :type => Integer, :default => Time.now.to_i
   field :published_at, :type => Integer
   field :status, :default => 'stored'
+
+  def self.find_stored
+    self.where(:status => 'stored')
+  end
 end
 
