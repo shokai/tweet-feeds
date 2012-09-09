@@ -1,6 +1,5 @@
 *.log
 .bundle
-*.lock
 *~
 .DS_Store
 .fuse*
