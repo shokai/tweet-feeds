@@ -1,6 +1,7 @@
-mongo_server : 'localhost'
-mongo_port : 27017
-mongo_db : 'tweet-feeds'
+mongo:
+  host : 'localhost'
+  port : 27017
+  database : 'tweet-feeds'
 
 user_agent : 'tweet-feeds'
 

@@ -1,35 +1,34 @@
 #!/usr/bin/env ruby
-require File.dirname(__FILE__)+'/helper'
+require File.expand_path '../bootstrap', File.dirname(__FILE__)
+Bootstrap.init :models
 require 'feed-normalizer'
-require 'open-uri'
 require 'kconv'
 require 'uri'
 
-
-@conf['feeds'].each{|url|
+Conf['feeds'].each{|url|
   puts url
   begin
-    feed = FeedNormalizer::FeedNormalizer.parse open(url, 'User-Agent' => @conf['user_agent'])
-  rescue => e
-    STDERR.puts 'feed parse error!'
-    STDOUT.puts e
-    next
-  rescue Timeout::Error => e
+    feed = FeedNormalizer::FeedNormalizer.parse http_get(url)
+  rescue StandardError, Timeout::Error => e
     STDERR.puts 'feed parse error!'
     STDOUT.puts e
     next
   end
   next unless feed
   feed.entries.reverse.each{|i|
-    next if Page.all(:conditions => {:url => i.url}).size > 0
     page = Page.new(
                     :url => i.url,
                     :title => i.title.to_s.toutf8,
                     :description => i.description.to_s.toutf8,
                     :date_published => i.date_published
                     )
-    page.save
-    puts "#{i.title} => #{i.url}"
+
+    puts "#{i.title} - #{i.url}"
+    if page.save
+      puts " => saved!"
+    else
+      puts " => skip"
+    end
   }
 }
 

@@ -1,16 +1,7 @@
 #!/usr/bin/env ruby
-require 'rubygems'
-require 'oauth'
-require 'yaml'
+require File.expand_path '../bootstrap', File.dirname(__FILE__)
 
-begin
-  conf = YAML::load open(File.dirname(__FILE__) + '/config.yaml')
-rescue
-  STDERR.puts 'config.yaml load error'
-  exit 1
-end
-
-consumer = OAuth::Consumer.new(conf['consumer_key'], conf['consumer_secret'],
+consumer = OAuth::Consumer.new(Conf['consumer_key'], Conf['consumer_secret'],
                                :site => "http://twitter.com/")
 
 request_token = consumer.get_request_token(

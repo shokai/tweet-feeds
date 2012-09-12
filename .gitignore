@@ -1,6 +1,4 @@
-*.log
 .bundle
 *~
 .DS_Store
-.fuse*
-config.yaml
+config.yml
