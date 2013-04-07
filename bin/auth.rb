@@ -2,7 +2,7 @@
 require File.expand_path '../bootstrap', File.dirname(__FILE__)
 
 consumer = OAuth::Consumer.new(Conf['consumer_key'], Conf['consumer_secret'],
-                               :site => "http://twitter.com/")
+                               :site => "http://api.twitter.com")
 
 request_token = consumer.get_request_token(
                                            #:oauth_callback => "http://example.com"
