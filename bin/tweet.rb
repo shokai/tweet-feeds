@@ -17,7 +17,7 @@ rescue => e
 end
 
 Page.find_to_publish.each{|page|
-  mes = "#{page.title} #{page.url}"
+  mes = "#{page.title} #{URI.encode page.url}"
   begin
     Twitter.update mes
   rescue
