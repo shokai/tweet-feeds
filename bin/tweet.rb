@@ -4,8 +4,9 @@ Bootstrap.init :models
 require 'kconv'
 require 'uri'
 
+client = nil
 begin
-  Twitter.configure do |c|
+  client = Twitter::REST::Client.new do |c|
     c.consumer_key = Conf['consumer_key']
     c.consumer_secret = Conf['consumer_secret']
     c.oauth_token = Conf['access_token']
@@ -19,7 +20,7 @@ end
 Page.find_to_publish.each{|page|
   mes = "#{page.title} #{URI.encode page.url}"
   begin
-    Twitter.update mes
+    client.update mes
   rescue
     STDERR.puts "tweet failed! #{mes}"
     next
