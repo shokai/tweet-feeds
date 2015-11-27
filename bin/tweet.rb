@@ -18,7 +18,7 @@ rescue => e
 end
 
 Page.find_to_publish.each{|page|
-  mes = "#{page.title} #{URI.encode page.url}"
+  mes = "#{page.title} #{page.url.gsub(' ', '%20')}"
   begin
     client.update mes
   rescue
